@@ -3,12 +3,12 @@
 %bcond_without	tests		# do not perform "make test"
 
 %include	/usr/lib/rpm/macros.perl
-%define	pdir	Sys
-%define	pnam	Syslog
+%define		pdir	Sys
+%define		pnam	Syslog
 Summary:	Sys::Syslog - Perl interface to the UNIX syslog(3) calls
 Name:		perl-Sys-Syslog
 Version:	0.27
-Release:	2
+Release:	3
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -18,6 +18,10 @@ URL:		http://search.cpan.org/dist/Sys-Syslog/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
+BuildRequires:	perl-POE
+BuildRequires:	perl-POE-Component-Server-Syslog >= 1.18
+BuildRequires:	perl-Test-Pod-Coverage >= 1.06
+BuildRequires:	perl-Test-Portability-Files
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
