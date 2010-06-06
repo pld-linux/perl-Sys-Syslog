@@ -1,12 +1,11 @@
 #
 # Conditional build:
 %bcond_without	tests		# do not perform "make test"
-#
+
 %include	/usr/lib/rpm/macros.perl
 %define	pdir	Sys
 %define	pnam	Syslog
 Summary:	Sys::Syslog - Perl interface to the UNIX syslog(3) calls
-#Summary(pl.UTF-8):	
 Name:		perl-Sys-Syslog
 Version:	0.27
 Release:	2
@@ -15,8 +14,7 @@ License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Sys/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	c18de7bca86846c107df290d93414830
-# generic URL, check or change before uncommenting
-#URL:		http://search.cpan.org/dist/Sys-Syslog/
+URL:		http://search.cpan.org/dist/Sys-Syslog/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
@@ -24,18 +22,17 @@ BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Sys::Syslog is an interface to the UNIX syslog(3) program.
-Call syslog() with a string priority and a list of printf() args
-just like syslog(3).
-
-You can find a kind of FAQ in "THE RULES OF SYS::SYSLOG".  Please read 
-it before coding, and again before asking questions. 
-
-# %description -l pl.UTF-8
-# TODO
+Sys::Syslog is an interface to the UNIX syslog(3) program. Call
+syslog() with a string priority and a list of printf() args just like
+syslog(3).
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
+
+# we don't have syslog running on builders
+rm t/syslog.t
+# we broke dist
+rm t/distchk.t
 
 %build
 %{__perl} Makefile.PL \
@@ -53,7 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-cp -a eg $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp -a eg/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
