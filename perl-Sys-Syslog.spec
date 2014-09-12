@@ -64,7 +64,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc Changes README
 %{perl_vendorarch}/Sys/*.pm
 %dir %{perl_vendorarch}/auto/Sys/Syslog
-%{perl_vendorarch}/auto/Sys/Syslog/*.bs
 %attr(755,root,root) %{perl_vendorarch}/auto/Sys/Syslog/*.so
 %{_mandir}/man3/*
 %{_examplesdir}/%{name}-%{version}
