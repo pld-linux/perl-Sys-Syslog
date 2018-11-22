@@ -7,13 +7,13 @@
 %define		pnam	Syslog
 Summary:	Sys::Syslog - Perl interface to the UNIX syslog(3) calls
 Name:		perl-Sys-Syslog
-Version:	0.29
-Release:	2
+Version:	0.35
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Sys/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	4c7aeb0a05e8dde2ab05a0b3be19d72c
+# Source0-md5:	59dfb279f78a5ff587ba2ee8989b13e8
 URL:		http://search.cpan.org/dist/Sys-Syslog/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
